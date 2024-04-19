@@ -38,15 +38,7 @@ if __name__ == "__main__":
 #
 # print('API_HOST_GOERLI --> ', API_HOST_GOERLI)
 #
-# # Constants
-# ETHEREUM_ADDRESS = "0x4c13dfa4Fd6D0dfe63c73c3da0660404a2e42195"
-# ETH_PRIVATE_KEY = "0x04b5c4a9a27fc559f047f2e9304fd459ebacead80dd18da05eb4a1fc9d1ce263"
-#
-# STARK_PRIVATE_KEY = "075b9cbd33bcbde369313088d11ebb94b4ca76a2a0d9d29d8c5c060371a6cf1e"
-# DYDX_API_KEY = "0f28e716-57d0-c300-4561-9f6b0a43ad63"
-# DYDX_API_SECRET = "mnPSb1mgcM7sVzX0dU6oeTdE-7QfWp7Gw9MsjIM1"
-# DYDX_API_PASSPHRASE = "TtQVr_TQyHlVEA_eLYMd"
-# HOST = API_HOST_GOERLI
+
 #
 # # HTTP Provider
 # HTTP_PROVIDER = "https://sepolia.infura.io/v3/911cde61cefc41fea13ef23145de40f5"
