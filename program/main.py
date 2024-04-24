@@ -1,5 +1,43 @@
+from constants import ABORT_ALL_POSITION, FIND_COINTEGRATED
+from func_connections import connect_dydx
+from func_private import place_market_order, abort_all_positions
+from func_public import construct_market_prices
+
 if __name__ == "__main__":
     print('Artur you cool', )
+
+    # Connect to client
+    try:
+        print("Connecting to Client...")
+        client = connect_dydx()
+    except Exception as e:
+        print("Error connecting to client: ", e)
+        exit(1)
+
+    # Abort all open position
+    if ABORT_ALL_POSITION:
+        try:
+            print("Closing all position...")
+            close_orders = abort_all_positions(client)
+        except Exception as e:
+            print("Error closing all position: ", e)
+            exit(1)
+
+    # Find Cointegrated Pairs
+    if FIND_COINTEGRATED:
+        # Construct Market Prices
+        try:
+            print("Fetching market prices, please allow 3 mins...")
+            df_market_price = construct_market_prices(client)
+        except Exception as e:
+            print("Error constructing market prices: ", e)
+            exit(1)
+
+
+
+
+
+
 
 
 
@@ -79,33 +117,6 @@ if __name__ == "__main__":
 # # PPrint Result
 # pprint(candles.data["candles"][0])
 #
-# #  Get Position Id
-# account_response = client.private.get_account()
-# position_id = account_response.data['account']['positionId']
-# print('position_id --> ', position_id)
-#
-# # Get expiration time
-# server_time = client.public.get_time()
-# print('server_time --> ', server_time.data)
-# expiration_s = datetime.fromisoformat(server_time.data["iso"].replace("Z", "+00:00"))
-# expiration = datetime.fromisoformat(server_time.data["iso"].replace("Z", "+00:00")) + timedelta(seconds=70)
-# print('expiration_s --> ', expiration_s.timestamp())
-# print('expiration   --> ', expiration.timestamp())
-#
-# # Place an order
-# placed_order = client.private.create_order(
-#   position_id=position_id,
-#   market="BTC-USD",
-#   side="BUY",
-#   order_type="MARKET",
-#   post_only=False,
-#   size='0.001',
-#   price='1000000',
-#   limit_fee='0.015',
-#   expiration_epoch_seconds=expiration.timestamp(),
-#   time_in_force="FOK",
-#   reduce_only=False
-# )
 #
 # # pprint(placed_order.data)
 #
